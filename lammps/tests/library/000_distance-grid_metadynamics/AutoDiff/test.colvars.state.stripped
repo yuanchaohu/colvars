@@ -1,11 +1,11 @@
 configuration {
   step           20
-  dt 1.000000e+00
+  dt 1.000000e-01
 }
 
 colvar {
   name one
-  x  3.21930521022411e+00
+  x  3.20389752561658e+00
 }
 
 metadynamics {

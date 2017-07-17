@@ -1,11 +1,11 @@
 configuration {
   step           20
-  dt 1.000000e+00
+  dt 1.000000e-01
 }
 
 colvar {
   name one
-  x  3.21930418203593e+00
+  x  3.20389751192666e+00
 }
 
 histogram {

@@ -1,11 +1,11 @@
 configuration {
   step           20
-  dt 1.000000e+00
+  dt 1.000000e-01
 }
 
 colvar {
   name one
-  x  2.75368167251057e+01
+  x  2.73895274211270e+01
 }
 
 restraint {

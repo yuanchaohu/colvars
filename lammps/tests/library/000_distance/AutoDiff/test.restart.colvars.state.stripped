@@ -1,10 +1,10 @@
 configuration {
   step           40
-  dt 1.000000e+00
+  dt 1.000000e-01
 }
 
 colvar {
   name one
-  x  3.21824326556954e+00
+  x  3.20490371821860e+00
 }
 

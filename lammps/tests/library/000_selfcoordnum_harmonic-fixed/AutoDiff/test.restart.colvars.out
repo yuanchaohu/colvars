@@ -97,7 +97,7 @@ colvars: ----------------------------------------------------------------------
 colvars: Re-initialized atom group one:0/0. 4 atoms: total mass = 4.
 colvars: ----------------------------------------------------------------------
 colvars: Restarting from file "test.colvars.state".
-colvars:   Restarting collective variable "one" from value: 5.50526
+colvars:   Restarting collective variable "one" from value: 5.50567
 colvars: ----------------------------------------------------------------------
 colvars: The restart output state file will be "rest.colvars.state".
 colvars: The final output state file will be "test.restart.colvars.state".
