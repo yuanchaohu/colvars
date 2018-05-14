@@ -26,11 +26,10 @@ cvm::real colvar::coordnum::switching_function(cvm::real const &r0,
       (*pairlist_elem)++;
       return 0.0;
     }
+    //If we are here, we know we will be going through the rest of the comparison.
+    //Increment the pairlist pointer, otherwise we get stuck on a true!
+    (*pairlist_elem)++;
   }
-
-  cvm::rvector const r0sq_vec(r0_vec.x*r0_vec.x,
-                              r0_vec.y*r0_vec.y,
-                              r0_vec.z*r0_vec.z);
 
   cvm::rvector const diff = cvm::position_distance(A1.pos, A2.pos);
 
@@ -53,11 +52,11 @@ cvm::real colvar::coordnum::switching_function(cvm::real const &r0,
   if (flags & ef_gradients) {
     cvm::real const dFdl2 = (1.0/(1.0-xd))*(en2*(xn/l2) -
                                             func*ed2*(xd/l2))*(-1.0);
-    cvm::rvector const dl2dx((2.0/((flags & ef_anisotropic) ? r0sq_vec.x :
+    cvm::rvector const dl2dx((2.0/((flags & ef_anisotropic) ? (r0_vec.x*r0_vec.x) :
                                    r0*r0)) * diff.x,
-                             (2.0/((flags & ef_anisotropic) ? r0sq_vec.y :
+                             (2.0/((flags & ef_anisotropic) ? (r0_vec.y*r0_vec.y) :
                                    r0*r0)) * diff.y,
-                             (2.0/((flags & ef_anisotropic) ? r0sq_vec.z :
+                             (2.0/((flags & ef_anisotropic) ? (r0_vec.z*r0_vec.z) :
                                    r0*r0)) * diff.z);
     A1.grad += (-1.0)*dFdl2*dl2dx;
     A2.grad +=        dFdl2*dl2dx;
