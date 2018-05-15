@@ -22,8 +22,9 @@ cvm::real colvar::coordnum::switching_function(cvm::real const &r0,
                                                cvm::real pairlist_tol)
 {
   if ((flags & ef_use_pairlist) && !(flags & ef_rebuild_pairlist)) {
-    if (!**pairlist_elem) {
-      (*pairlist_elem)++;
+    bool const within = **pairlist_elem;
+    (*pairlist_elem)++;
+    if (!within) {
       return 0.0;
     }
     //If we are here, we know we will be going through the rest of the comparison.
@@ -274,8 +275,6 @@ void colvar::coordnum::calc_value()
       int const flags = ef_null;
       for (ai1 = group1->begin(); ai1 != ai1_end; ai1++) {
         for (ai2 = group2->begin(); ai2 != ai2_end; ai2++) {
-          std::cerr << "ai1 = " << &(*ai1) << ", ai1_end = " << &(*ai1_end) << std::endl;
-          std::cerr << "pair = " << ai1->id << ", " << ai2->id << std::endl;
           x.real_value += switching_function<flags>(r0, r0_vec, en, ed,
                                                     *ai1, *ai2,
                                                     NULL, 0.0);
